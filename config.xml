@@ -20,6 +20,10 @@
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
+	
+	<platform name="ios">
+        <allow-intent href="market:*" />
+    </platform>
 
     <icon src="mySplash.png"/>
     <splash src="mySplash.png"/>

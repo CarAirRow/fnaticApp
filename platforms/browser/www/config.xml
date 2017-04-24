@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.cordova.fnaticApp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Camera">
+        <param name="browser-package" value="Camera" />
+    </feature>
+    <name>Fnatic App</name>
+    <description>
+        An app that will allow the team Fnatic control their team stats and standings.
+    </description>
+    <author email="acarreiro-cc@conestoga.on.ca" href="http://cordova.io">
+        Alex Carreiro : 6683205
+        Birju Patel : 7120967
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <icon src="mySplash.png" />
+    <splash src="mySplash.png" />
+</widget>

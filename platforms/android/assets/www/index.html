@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title> Fnatic App</title>
+        <!-- jQuery -->
+        <script src="js/lib/jquery-2.1.4.js"></script>
+        <!-- jQuery mobile-->
+        <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+        <!-- jQuery validation-->
+        <script src="js/lib/jquery.validate.js"></script>
+        <!-- jQuery mobile style-->
+        <link rel="stylesheet" type="text/css" href="css/lib/jquery.mobile-1.4.5.css">
+        <!-- our stuff-->
+        <link rel="stylesheet" type="text/css" href="css/myStyle.css">
+        <script src="js/global.js"></script>
+        <script src="js/util.js"></script>
+        <script src="js/Facade.js"></script>
+        <script src="js/Database.js"></script>
+        <script src="js/DAL.js"></script>
+
+        <!-- cordova -->
+        <script src="js/camera.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+
+    </head>
+    <body>
+    <!-- Home Page-->
+    <div id="pageHome" data-role="page">
+        <header data-role="header" data-theme="b" data-position="fixed">
+        <h1>Fnatic</h1>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#pageHome" data-icon="home" class="ui-btn-active ui-state-persist">Home</a></li>
+                <li><a href="#pageSchedule" data-icon="calendar">Schedule</a></li>
+                <li><a href="#pageTeamStats" data-icon="grid">Team Stats</a></li>
+                <li><a href="#pageStandings" data-icon="bars">Standings</a></li>
+                <li><a href="#pageAbout" data-icon="star">About</a></li>
+            </ul>
+        </div>
+        </header>
+        <section data-role="content">
+                <h2 align="center">Welcome To Fnatic eSports </h2>
+            <div align="center">
+                <img src="img/fnatic.jpg" width="50%" height="50%" alt="logo">
+            </div>
+            <h3 align="center">About Fnatic</h3>
+            <p>Fnatic is a leading organisation in eSports, with professional teams in the most popular games such as: League of Legends, Dota 2, Battlefield 4, and more.</p>
+            <h3 align="center">History</h3>
+            <p>The Fnatic organisation was founded by both Sam Mathews and Anne Mathews. Fnatic's HQ is located in the heart of London, United Kingdom. With offices in Belgrade, Serbia and a professional gaming house in Cologne, Germany. While staying true to our roots Fnatic will continue to breed the best talent, select the finest partners, and continue to exceed expectations.</p>
+            <a href="http://www.fnatic.com/players" data-role="button">
+               View Our Other Teams
+            </a>
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <h1>&copy; Alex Carreiro, Birju Patel</h1>
+        </footer>
+    </div>
+    <!-- Schedule Page-->
+    <div id="pageSchedule" data-role="page">
+            <header data-role="header" data-theme="b" data-position="fixed">
+                <h1>Fnatic</h1>
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="#pageHome" data-icon="home">Home</a></li>
+                        <li><a href="#pageSchedule" data-icon="calendar"  class="ui-btn-active ui-state-persist">Schedule</a></li>
+                        <li><a href="#pageTeamStats" data-icon="grid">Team Stats</a></li>
+                        <li><a href="#pageStandings" data-icon="bars">Standings</a></li>
+                        <li><a href="#pageAbout" data-icon="star">About</a></li>
+                    </ul>
+                </div>
+            </header>
+            <section data-role="content">
+                <ul id="ScheduleList" data-role="listview" data-inset="true">
+
+                </ul>
+                <div data-role="controlgroup" data-type="horizontal" data-theme="b">
+                    <a href="#pageAddToSchedule"  id="btnAddSchedule" name="btnAddSchedule" class="ui-btn">Add A Match</a>
+                </div>
+            </section>
+            <footer data-role="footer" data-theme="b" data-position="fixed">
+                <h1>&copy; Alex Carreiro, Birju Patel</h1>
+            </footer>
+        </div>
+    <!-- Add Schedule Page-->
+    <div id="pageAddToSchedule" data-role="page">
+        <header data-role="header" data-theme="b" data-position="fixed">
+            <h1>Fnatic</h1>
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#pageHome" data-icon="home">Home</a></li>
+                    <li><a href="#pageSchedule" data-icon="calendar"  class="ui-btn-active ui-state-persist">Schedule</a></li>
+                    <li><a href="#pageTeamStats" data-icon="grid">Team Stats</a></li>
+                    <li><a href="#pageStandings" data-icon="bars">Standings</a></li>
+                    <li><a href="#pageAbout" data-icon="star">About</a></li>
+                </ul>
+            </div>
+        </header>
+        <section data-role="content">
+            <form id="AddScheduleForm" name="AddScheduleForm">
+
+                <label for="dataOfGame">Date: </label>
+                <input type="date" id="dataOfGame" name="dataOfGame">
+                <label for="timeOfGame">Time: </label>
+                <input type="time" id="timeOfGame" name="timeOfGame">
+                <label for="locationGame">Location: </label>
+                <input type="text" id="locationGame" name="locationGame">
+                <div data-role="controlgroup" data-type="horizontal" data-theme="b">
+                    <a   id="btnSaveSchedule" name="btnSaveSchedule" class="ui-btn ui-btn-inline ui-btn-active ui-corner-all">Save</a>
+                </div>
+                </form>
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <h1>&copy; Alex Carreiro, Birju Patel</h1>
+        </footer>
+    </div>
+    <!-- Edit Schedule Page-->
+    <div id="pageEditSchedule" data-role="page">
+        <header data-role="header" data-theme="b" data-position="fixed">
+            <h1>Fnatic</h1>
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#pageHome" data-icon="home">Home</a></li>
+                    <li><a href="#pageSchedule" data-icon="calendar"  class="ui-btn-active ui-state-persist">Schedule</a></li>
+                    <li><a href="#pageTeamStats" data-icon="grid">Team Stats</a></li>
+                    <li><a href="#pageStandings" data-icon="bars">Standings</a></li>
+                    <li><a href="#pageAbout" data-icon="star">About</a></li>
+                </ul>
+            </div>
+        </header>
+        <section data-role="content">
+            <form id="EditScheduleForm" name="EditScheduleForm">
+                <label for="dataOfGame1">Date: </label>
+                <input type="date" id="dataOfGame1" name="dataOfGame1">
+                <label for="timeOfGame1">Time: </label>
+                <input type="time" id="timeOfGame1" name="timeOfGame1">
+                <label for =locationGame1>Location: </label>
+                <input type="text" id="locationGame1" name="locationGame1">
+                <label>Winner:</label>
+                <input type="radio" name="whoWon" id="homeWin1" value="Home" checked>
+                <label for="homeWin1">Home</label>
+                <input type="radio" name="whoWon" id="awayWin1" value="Away">
+                <label for="awayWin1">Away</label>
+                <label for="textAreaComments1">Game Comments:</label>
+                <textarea id="textAreaComments1" name="textAreaComments1"></textarea>
+                <div data-role="controlgroup" data-type="horizontal" data-theme="b">
+                    <a id="btnSave" name="btnSave" class="ui-btn ui-btn-inline ui-btn-active ui-corner-all">Save</a>
+
+                    <a id="btnDelete" name="btnDelete" class="ui-btn ui-btn-inline ui-corner-all">Delete</a>
+
+                </div>
+            </form>
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <h1>&copy; Alex Carreiro, Birju Patel</h1>
+        </footer>
+    </div>
+    <!-- Team Stats Page-->
+    <div id="pageTeamStats" data-role="page">
+        <header data-role="header" data-theme="b" data-position="fixed">
+            <h1>Fnatic</h1>
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#pageHome" data-icon="home">Home</a></li>
+                    <li><a href="#pageSchedule" data-icon="calendar">Schedule</a></li>
+                    <li><a href="#pageTeamStats" data-icon="grid" class="ui-btn-active ui-state-persist">Team Stats</a></li>
+                    <li><a href="#pageStandings" data-icon="bars">Standings</a></li>
+                    <li><a href="#pageAbout" data-icon="star">About</a></li>
+                </ul>
+            </div>
+        </header>
+        <section data-role="content">
+            <div id="statistics">
+                <table data-role="table" data-mode="column" class="ui-responsive ui-shadow" id="teamTable">
+
+                </table>
+            </div>
+
+                <a href="#pageEditTeamStats"  id="btnEditTeamStats" name="btnEditTeamStats" class="ui-btn ui-corner-all">Edit Team Stats</a>
+                <a href="#pageUploadPlayerPhoto"  id="btnAddPhoto" name="btnAddPhoto" class="ui-btn ui-corner-all">Add Team Photo</a>
+
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <h1>&copy; Alex Carreiro, Birju Patel</h1>
+        </footer>
+    </div>
+    <!-- Edit Standings Page-->
+    <div id="pageEditTeamStats" data-role="page">
+        <header data-role="header" data-theme="b" data-position="fixed">
+            <h1>Fnatic</h1>
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#pageHome" data-icon="home">Home</a></li>
+                    <li><a href="#pageSchedule" data-icon="calendar">Schedule</a></li>
+                    <li><a href="#pageTeamStats" data-icon="grid" class="ui-btn-active ui-state-persist">Team Stats</a></li>
+                    <li><a href="#pageStandings" data-icon="bars">Standings</a></li>
+                    <li><a href="#pageAbout" data-icon="star">About</a></li>
+                </ul>
+            </div>
+        </header>
+        <section data-role="content">
+            <form id="EditTeamStatsForm">
+                <label for="playerNames">Player:</label>
+                <select id="playerNames" name="playerNames" data-native-menu="false">
+                    <option value="Rekkles">Rekkles</option>
+                    <option value="Kikis">Kikis</option>
+                    <option value="Zven">Zven</option>
+                </select>
+                <label for="killNum">Kills: </label>
+                <input type="number" id="killNum" name="killNum">
+                <label for="deathNum">Deaths: </label>
+                <input type="number" id="deathNum" name="deathNum">
+                <label for="potgNum">POTG: </label>
+                <input type="number" id="potgNum" name="potgNum">
+                <div data-role="controlgroup" data-type="horizontal" data-theme="b">
+                    <a id="btnConfirmTeamStats" name="btnConfirmTeamStats" class="ui-btn ui-btn-inline ui-btn-active ui-corner-all">Confirm</a>
+                </div>
+            </form>
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <h1>&copy; Alex Carreiro, Birju Patel</h1>
+        </footer>
+    </div>
+    <!-- Add Team Photo Page-->
+    <div id="pageUploadPlayerPhoto" data-role="page">
+        <header data-role="header" data-theme="b" data-position="fixed">
+            <h1>Fnatic</h1>
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#pageHome" data-icon="home">Home</a></li>
+                    <li><a href="#pageSchedule" data-icon="calendar">Schedule</a></li>
+                    <li><a href="#pageTeamStats" data-icon="grid" class="ui-btn-active ui-state-persist">Team Stats</a></li>
+                    <li><a href="#pageStandings" data-icon="bars">Standings</a></li>
+                    <li><a href="#pageAbout" data-icon="star">About</a></li>
+                </ul>
+            </div>
+        </header>
+        <section data-role="content">
+            <form id="addTeamPlayerPhotoForm" name="EditTeamStatsForm">
+                <button type="button" id="btnCapturePhoto" name="btnCapturePhoto" data-icon="plus"
+                        data-iconpos="left"
+                        data-theme="a" data-inline="false" class="">Capture Photo
+                </button>
+
+                <button type="button" id="btnFromPhotoLibrary" name="btnFromPhotoLibrary" data-icon="plus"
+                        data-iconpos="left"
+                        data-theme="a" data-inline="false" class="">Load From Photo Library
+                </button>
+                <img id="imgSnap" name="imgSnap" src="" width="100%" height="100%">
+
+                <div data-role="controlgroup" data-type="horizontal" data-theme="b">
+                    <a href="#pageTeamStats"  id="btnConfirmPhoto" name="btnConfirmPhoto" class="ui-btn ui-btn-inline ui-btn-active ui-corner-all">Confirm</a>
+                </div>
+            </form>
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <h1>&copy; Alex Carreiro, Birju Patel</h1>
+        </footer>
+    </div>
+    <!-- Standings Page-->
+    <div id="pageStandings" data-role="page">
+        <header data-role="header" data-theme="b" data-position="fixed">
+            <h1>Fnatic</h1>
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#pageHome" data-icon="home">Home</a></li>
+                    <li><a href="#pageSchedule" data-icon="calendar">Schedule</a></li>
+                    <li><a href="#pageTeamStats" data-icon="grid">Team Stats</a></li>
+                    <li><a href="#pageStandings" data-icon="bars" class="ui-btn-active ui-state-persist">Standings</a></li>
+                    <li><a href="#pageAbout" data-icon="star">About</a></li>
+                </ul>
+            </div>
+        </header>
+        <section data-role="content">
+            <table data-role="table" data-mode="column" class="ui-responsive ui-shadow" id="standingsTable">
+
+            </table>
+            <div data-role="controlgroup" data-type="horizontal" data-theme="b">
+                <a href="#pageEditStandings"  id="btnEditStandings" name="btnEditStandings" class="ui-btn ui-btn-inline ui-btn-active ui-corner-all">Edit Standings</a>
+            </div>
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <h1>&copy; Alex Carreiro, Birju Patel</h1>
+        </footer>
+    </div>
+    <!-- Edit Standings Page-->
+    <div id="pageEditStandings" data-role="page">
+        <header data-role="header" data-theme="b" data-position="fixed">
+            <h1>Fnatic</h1>
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#pageHome" data-icon="home">Home</a></li>
+                    <li><a href="#pageSchedule" data-icon="calendar">Schedule</a></li>
+                    <li><a href="#pageTeamStats" data-icon="grid">Team Stats</a></li>
+                    <li><a href="#pageStandings" data-icon="bars" class="ui-btn-active ui-state-persist">Standings</a></li>
+                    <li><a href="#pageAbout" data-icon="star">About</a></li>
+                </ul>
+            </div>
+        </header>
+        <section data-role="content">
+            <form id="EditStandingsForm" name="EditStandingsForm">
+                <label for="teamNames">Team:</label>
+                <select id="teamNames" name="teamNames" data-native-menu="false">
+
+                </select>
+                <label for="winNum">Wins: </label>
+                <input type="number" id="winNum" name="winNum">
+                <label for="loseNum">Loses: </label>
+                <input type="number" id="loseNum" name="loseNum">
+                <label for="pointNum">Points: </label>
+                <input type="number" id="pointNum" name="pointNum" disabled>
+                <div data-role="controlgroup" data-type="horizontal" data-theme="b">
+                    <a  id="btnConfirmStandings" name="btnConfirmStandings" class="ui-btn ui-btn-inline ui-btn-active ui-corner-all">Confirm</a>
+                </div>
+            </form>
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <h1>&copy; Alex Carreiro, Birju Patel</h1>
+        </footer>
+    </div>
+    <!-- About Page-->
+    <div id="pageAbout" data-role="page">
+        <header data-role="header" data-theme="b" data-position="fixed">
+            <h1>Fnatic</h1>
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#pageHome" data-icon="home">Home</a></li>
+                    <li><a href="#pageSchedule" data-icon="calendar">Schedule</a></li>
+                    <li><a href="#pageTeamStats" data-icon="grid">Team Stats</a></li>
+                    <li><a href="#pageStandings" data-icon="bars">Standings</a></li>
+                    <li><a href="#pageAbout" data-icon="star" class="ui-btn-active ui-state-persist">About</a></li>
+                </ul>
+            </div>
+        </header>
+        <section data-role="content">
+            <br><br>
+            <h1 align="center">Developer: Alex Carreiro</h1>
+            <p align="center">Student Number: 6683205 </p>
+            <p align="center">Email: <a href="mailto:AlexxCarreiroo@gmail.com">Acarreiro-cc@conestogac.on.ca</a></p>
+            <br><br>
+            <h1 align="center">Developer: Birju Patel</h1>
+            <p align="center">Student Number: 7120967 </p>
+            <p align="center">Email: <a href="mailto:birjupatel95@hotmail.com">Bpatel0967@conestogac.on.ca</a></p>
+            <br><br>
+        </section>
+        <footer data-role="footer" data-theme="b" data-position="fixed">
+            <h1>&copy; Alex Carreiro, Birju Patel</h1>
+        </footer>
+    </div>
+    </body>
+</html>
